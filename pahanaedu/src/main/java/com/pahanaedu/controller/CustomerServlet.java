@@ -80,9 +80,10 @@ public class CustomerServlet extends HttpServlet {
         String address = request.getParameter("address");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
+        String units_consumed = request.getParameter("units_consumed");
         // Add other fields as per your DB
         
-        Customer newCustomer = new Customer(name, address, email, phone);
+        Customer newCustomer = new Customer(name, address, email, phone, units_consumed);
         customerDAO.insertCustomer(newCustomer);
         response.sendRedirect("customers");
     }
@@ -94,8 +95,9 @@ public class CustomerServlet extends HttpServlet {
         String address = request.getParameter("address");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
+        String units_consumed = request.getParameter("units_consumed");
         
-        Customer customer = new Customer(accountNo, name, address, email, phone);
+        Customer customer = new Customer(accountNo, name, address, email, phone, units_consumed);
         customerDAO.updateCustomer(customer);
         response.sendRedirect("customers");
     }

@@ -11,11 +11,11 @@ public class CustomerDAO {
     private String jdbcUsername = "root"; // Update your DB username
     private String jdbcPassword = "root1234"; // Update your DB password
     
-    private static final String INSERT_CUSTOMER_SQL = "INSERT INTO customer (name, address, email, phone) VALUES (?, ?, ?)";
-    private static final String SELECT_CUSTOMER_BY_ID = "SELECT account_no, name, address, email, phone FROM customer WHERE account_no = ?";
+    private static final String INSERT_CUSTOMER_SQL = "INSERT INTO customer (name, address, email, phone, units_consumed) VALUES (?, ?, ?)";
+    private static final String SELECT_CUSTOMER_BY_ID = "SELECT account_no, name, address, email, phone, units_consumed FROM customer WHERE account_no = ?";
     private static final String SELECT_ALL_CUSTOMERS = "SELECT * FROM customer";
     private static final String DELETE_CUSTOMER_SQL = "DELETE FROM customer WHERE account_no = ?";
-    private static final String UPDATE_CUSTOMER_SQL = "UPDATE customer SET name = ?, address = ?, email = ?, phone = ? WHERE account_no = ?";
+    private static final String UPDATE_CUSTOMER_SQL = "UPDATE customer SET name = ?, address = ?, email = ?, phone = ?, units_consumed = ? WHERE account_no = ?";
     
     protected Connection getConnection() throws SQLException {
         Connection connection = null;
@@ -37,6 +37,7 @@ public class CustomerDAO {
             preparedStatement.setString(2, customer.getAddress());
             preparedStatement.setString(3, customer.getEmail());
             preparedStatement.setString(4, customer.getPhone());
+            preparedStatement.setInt(5, customer.getUnitsConsumed());
             preparedStatement.executeUpdate();
             
         } catch (SQLException e) {
@@ -53,11 +54,12 @@ public class CustomerDAO {
             ResultSet rs = preparedStatement.executeQuery();
             
             if (rs.next()) {
-                String name 	= rs.getString("name");
-                String address 	= rs.getString("address");
-                String email 	= rs.getString("email");
-                String phone 	= rs.getString("phone");
-                customer = new Customer(accountNo, name, address, email, phone);
+                String name 			= rs.getString("name");
+                String address 			= rs.getString("address");
+                String email 			= rs.getString("email");
+                String phone 			= rs.getString("phone");
+                int units_consumed 	= rs.getInt("units_consumed");
+                customer = new Customer(accountNo, name, address, email, phone, units_consumed);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -73,12 +75,13 @@ public class CustomerDAO {
             ResultSet rs = preparedStatement.executeQuery();
             
             while (rs.next()) {
-                int accountNo 	= rs.getInt("account_no");
-                String name 	= rs.getString("name");
-                String address 	= rs.getString("address");
-                String email 	= rs.getString("email");
-                String phone 	= rs.getString("phone");
-                customers.add(new Customer(accountNo, name, address, email, phone));
+                int accountNo 			= rs.getInt("account_no");
+                String name 			= rs.getString("name");
+                String address 			= rs.getString("address");
+                String email 			= rs.getString("email");
+                String phone 			= rs.getString("phone");
+                int units_consumed 	= rs.getInt("units_consumed");
+                customers.add(new Customer(accountNo, name, address, email, phone, units_consumed));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -108,7 +111,8 @@ public class CustomerDAO {
             preparedStatement.setString(2, 	customer.getAddress());
             preparedStatement.setString(3, 	customer.getEmail());
             preparedStatement.setString(4, 	customer.getPhone());
-            preparedStatement.setInt(	5, 	customer.getAccountNo());
+            preparedStatement.setInt(	5, 	customer.getUnitsConsumed());
+            preparedStatement.setInt(	6, 	customer.getAccountNo());
             rowUpdated = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             printSQLException(e);

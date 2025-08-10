@@ -6,22 +6,25 @@ public class Customer {
     private String address;
     private String email;
     private String phone;
+    private int units_consumed;
     
     // Constructor without accountNo (for insert)
-    public Customer(String name, String address, String email, String phone) {
+    public Customer(String name, String address, String email, String phone, int units_consumed) {
         this.name = name;
         this.name = address;
         this.email = email;
         this.phone = phone;
+        this.units_consumed = units_consumed;
     }
     
     // Constructor with accountNo (for select/update)
-    public Customer(int accountNo, String name, String address, String email, String phone) {
+    public Customer(int accountNo, String name, String address, String email, String phone, int units_consumed) {
         this.accountNo = accountNo;
         this.name = name;
         this.name = address;
         this.email = email;
         this.phone = phone;
+        this.units_consumed = units_consumed;
     }
     
     // Getters and Setters
@@ -64,5 +67,13 @@ public class Customer {
     
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+    
+    public int getUnitsConsumed() {
+        return units_consumed;
+    }
+    
+    public void setUnitsConsumed(int units_consumed) {
+        this.units_consumed = units_consumed;
     }
 }
