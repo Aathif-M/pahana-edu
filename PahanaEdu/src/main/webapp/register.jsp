@@ -1,49 +1,98 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Pahana Edu - Admin Registration</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #f4f4f4; }
-        .container { max-width: 400px; margin: 80px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        h2 { text-align: center; margin-bottom: 20px; }
-        input[type="text"], input[type="password"] {
-            width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px;
-        }
-        input[type="submit"] {
-            width: 100%; background: #28a745; border: none; padding: 10px; color: white; font-size: 16px; cursor: pointer; border-radius: 4px;
-        }
-        input[type="submit"]:hover {
-            background: #1e7e34;
-        }
-        .error { color: red; margin-bottom: 15px; text-align: center; }
-        .login-link { text-align: center; margin-top: 15px; }
-    </style>
-</head>
-<body>
+    <!DOCTYPE html>
+    <html>
 
-<div class="container">
-    <h2>Admin Registration</h2>
+    <head>
+        <title>Pahana Edu - Admin Registration</title>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/custom.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="…" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="…"
+            crossorigin="anonymous"></script>
 
-    <form action="register" method="post">
-        <input type="text" name="username" placeholder="Username" required autofocus/>
-        <input type="password" name="password" placeholder="Password" required/>
-        <input type="submit" value="Register"/>
-    </form>
-
-    <div class="error">
-        <%
-            String errorMessage = (String) request.getAttribute("errorMessage");
-            if (errorMessage != null) {
-                out.print(errorMessage);
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                display: flex;
+                height: 100vh;
+                background-color: #ccc;
             }
-        %>
-    </div>
 
-    <div class="login-link">
-        <a href="login.jsp">Already have an account? Login here</a>
-    </div>
-</div>
+            .container {
+                max-width: 400px;
+                margin: 80px auto;
+                padding: 20px;
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
 
-</body>
-</html>
+            h2 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #fff;
+            }
+
+            input[type="text"],
+            input[type="password"] {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+
+            input[type="submit"] {
+                width: 100%;
+                background: #28a745;
+                border: none;
+                padding: 10px;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+
+            input[type="submit"]:hover {
+                background: #1e7e34;
+            }
+
+            .error {
+                color: red;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+
+            .login-link {
+                text-align: center;
+                margin-top: 15px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="login-register-container">
+            <h2>Admin Registration</h2>
+
+            <form action="register" method="post">
+                <input type="text" name="username" placeholder="Username" class="custom-input" required autofocus />
+                <input type="password" name="password" placeholder="Password" class="custom-input" required />
+                <input type="submit" value="Register" class="custom-input" />
+            </form>
+
+            <div class="error">
+                <% String errorMessage=(String) request.getAttribute("errorMessage"); if (errorMessage !=null) {
+                    out.print(errorMessage); } %>
+            </div>
+
+            <div class="register-login-link">
+                <a href="login.jsp">Already have an account? Login here</a>
+            </div>
+        </div>
+
+    </body>
+
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/app.js"></script>
+
+    </html>

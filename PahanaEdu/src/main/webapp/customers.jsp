@@ -15,14 +15,17 @@
 <html>
 <head>
     <title>Manage Customers - Pahana Edu</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/custom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="…" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="…" crossorigin="anonymous"></script>
+	
     <style>
-        body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px; }
-        h2 { margin-bottom: 20px; }
+        body { font-family: Arial, sans-serif; background: #f9f9f9; }
+        h2 { margin-bottom: 20px; margin-top:40px;}
         table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
         th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
         th { background-color: #007bff; color: white; }
-        tr:nth-child(even) { background-color: #f2f2f2; }
-        form { background: white; padding: 20px; border-radius: 6px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        
         input[type="text"], input[type="number"] {
             width: 100%; padding: 8px; margin: 6px 0 15px 0; border: 1px solid #ccc; border-radius: 4px;
         }
@@ -38,24 +41,19 @@
         a.button:hover {
             background-color: #c82333;
         }
-        .back-dashboard {
-            margin-bottom: 20px;
-            display: inline-block;
-            text-decoration: none;
-            color: #007bff;
-        }
-        .back-dashboard:hover {
-            text-decoration: underline;
-        }
+        
     </style>
 </head>
 <body>
 
-<a href="dashboard.jsp" class="back-dashboard">&larr; Back to Dashboard</a>
+<div class="top-row bg-dark">
+<a href="dashboard.jsp" class="btn btn-primary back">&larr; Back to Dashboard</a>
+</div>	
 
+<div class="container">
 <h2>Manage Customers</h2>
 
-<table>
+<table class="custom-table">
     <thead>
     <tr>
         <th>Account Number</th>
@@ -99,26 +97,31 @@
 </table>
 
 
-<h3><%= (editCustomer != null) ? "Edit Customer" : "Add New Customer" %></h3>
+<h2><%= (editCustomer != null) ? "Edit Customer" : "Add New Customer" %></h3>
 
+<div class="form-div">
 <form method="post" action="customers">
     <label>Account Number:</label><br/>
-    <input type="text" name="accountNumber" value="<%= (editCustomer != null) ? editCustomer.getAccountNumber() : "" %>" <%= (editCustomer != null) ? "readonly" : "required" %> /><br/>
+    <input class="custom-input" type="text" name="accountNumber" value="<%= (editCustomer != null) ? editCustomer.getAccountNumber() : "" %>" <%= (editCustomer != null) ? "readonly" : "required" %> /><br/>
 
     <label>Name:</label><br/>
-    <input type="text" name="name" value="<%= (editCustomer != null) ? editCustomer.getName() : "" %>" required /><br/>
+    <input class="custom-input" type="text" name="name" value="<%= (editCustomer != null) ? editCustomer.getName() : "" %>" required /><br/>
 
     <label>Address:</label><br/>
-    <input type="text" name="address" value="<%= (editCustomer != null) ? editCustomer.getAddress() : "" %>" required /><br/>
+    <input class="custom-input" type="text" name="address" value="<%= (editCustomer != null) ? editCustomer.getAddress() : "" %>" required /><br/>
 
     <label>Telephone:</label><br/>
-    <input type="text" name="telephone" value="<%= (editCustomer != null) ? editCustomer.getTelephone() : "" %>" required /><br/>
+    <input class="custom-input" type="text" name="telephone" value="<%= (editCustomer != null) ? editCustomer.getTelephone() : "" %>" required /><br/>
 
     <label>Units Consumed:</label><br/>
-    <input type="number" name="unitsConsumed" min="0" value="<%= (editCustomer != null) ? editCustomer.getUnitsConsumed() : "0" %>" required /><br/>
+    <input class="custom-input" type="number" name="unitsConsumed" min="0" value="<%= (editCustomer != null) ? editCustomer.getUnitsConsumed() : "0" %>" required /><br/>
 
-    <input type="submit" value="<%= (editCustomer != null) ? "Update Customer" : "Add Customer" %>" />
+    <input class="custom-input" type="submit" value="<%= (editCustomer != null) ? "Update Customer" : "Add Customer" %>" />
 </form>
+</div>
+</div>
 
 </body>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/app.js"></script>
 </html>
