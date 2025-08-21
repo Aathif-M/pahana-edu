@@ -19,13 +19,12 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="…" crossorigin="anonymous"></script>
     
     <style>
-        body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px; }
-        h2 { margin-bottom: 20px; }
+        body { font-family: Arial, sans-serif; background: #f9f9f9; }
+        h2 { margin-bottom: 20px; margin-top:40px;}
         table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
         th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
         th { background-color: #007bff; color: white; }
-        tr:nth-child(even) { background-color: #f2f2f2; }
-        form { background: white; padding: 20px; border-radius: 6px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        
         input[type="text"], input[type="number"] {
             width: 100%; padding: 8px; margin: 6px 0 15px 0; border: 1px solid #ccc; border-radius: 4px;
         }
@@ -41,24 +40,18 @@
         a.button:hover {
             background-color: #c82333;
         }
-        .back-dashboard {
-            margin-bottom: 20px;
-            display: inline-block;
-            text-decoration: none;
-            color: #007bff;
-        }
-        .back-dashboard:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
 
-<a href="dashboard.jsp" class="back-dashboard">&larr; Back to Dashboard</a>
+<div class="top-row bg-dark">
+<a href="dashboard.jsp" class="btn btn-primary back">&larr; Back to Dashboard</a>
+</div>	
 
-<h2>Manage Inventory</h2>
+<div class="container">
+<h2>Manage Books</h2>
 
-<table>
+<table class="custom-table">
     <thead>
     <tr>
         <th>ID</th>
@@ -88,7 +81,7 @@
         } else {
     %>
         <tr>
-            <td colspan="5" style="text-align:center;">No inventory items found.</td>
+            <td colspan="5" style="text-align:center;">No Books found.</td>
         </tr>
     <%
         }
@@ -96,25 +89,28 @@
     </tbody>
 </table>
 
-<h3><%= (editItem != null) ? "Edit Inventory Item" : "Add New Inventory Item" %></h3>
+<h3><%= (editItem != null) ? "Edit Book" : "Add New Book" %></h3>
 
+<div class="form-div">
 <form method="post" action="inventory">
     <% if (editItem != null) { %>
         <input type="hidden" name="id" value="<%= editItem.getId() %>"/>
     <% } %>
 
     <label>Book Name:</label><br/>
-    <input type="text" name="bookName" value="<%= (editItem != null) ? editItem.getBookName() : "" %>" required/><br/>
+    <input class="custom-input" type="text" name="bookName" value="<%= (editItem != null) ? editItem.getBookName() : "" %>" required/><br/>
 
     <label>Price: (Rs)</label><br/>
-    <input type="number" name="price" step="0.01" min="0" value="<%= (editItem != null) ? editItem.getPrice() : "0.00" %>" required/><br/>
+    <input class="custom-input" type="number" name="price" step="0.01" min="0" value="<%= (editItem != null) ? editItem.getPrice() : "0.00" %>" required/><br/>
 
     <label>Stock:</label><br/>
-    <input type="number" name="stock" min="0" value="<%= (editItem != null) ? editItem.getStock() : "0" %>" required/><br/>
+    <input class="custom-input" type="number" name="stock" min="0" value="<%= (editItem != null) ? editItem.getStock() : "0" %>" required/><br/>
 
-    <input type="submit" value="<%= (editItem != null) ? "Update Item" : "Add Item" %>" />
+    <input class="custom-input" type="submit" value="<%= (editItem != null) ? "Update Item" : "Add Item" %>" />
 </form>
+</div>
 
+</div>
 </body>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/app.js"></script>

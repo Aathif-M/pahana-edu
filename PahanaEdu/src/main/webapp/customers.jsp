@@ -102,7 +102,7 @@
 <div class="form-div">
 <form method="post" action="customers">
     <label>Account Number:</label><br/>
-    <input class="custom-input" type="text" name="accountNumber" value="<%= (editCustomer != null) ? editCustomer.getAccountNumber() : "" %>" <%= (editCustomer != null) ? "readonly" : "required" %> /><br/>
+    <input class="custom-input" type="number" name="accountNumber" value="<%= (editCustomer != null) ? editCustomer.getAccountNumber() : "" %>" <%= (editCustomer != null) ? "readonly" : "required" %> /><br/>
 
     <label>Name:</label><br/>
     <input class="custom-input" type="text" name="name" value="<%= (editCustomer != null) ? editCustomer.getName() : "" %>" required /><br/>
@@ -111,7 +111,7 @@
     <input class="custom-input" type="text" name="address" value="<%= (editCustomer != null) ? editCustomer.getAddress() : "" %>" required /><br/>
 
     <label>Telephone:</label><br/>
-    <input class="custom-input" type="text" name="telephone" value="<%= (editCustomer != null) ? editCustomer.getTelephone() : "" %>" required /><br/>
+    <input class="custom-input" type="number" name="telephone" value="<%= (editCustomer != null) ? editCustomer.getTelephone() : "" %>" required /><br/>
 
     <label>Units Consumed:</label><br/>
     <input class="custom-input" type="number" name="unitsConsumed" min="0" value="<%= (editCustomer != null) ? editCustomer.getUnitsConsumed() : "0" %>" required /><br/>

@@ -168,20 +168,54 @@ main > * {
   text-decoration: none;
 }
 
-table {
+table.custom-table {
   width: 100%;
   border-collapse: collapse;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
 }
 
-th,
-td {
+table.custom-table th,
+table.custom-table td {
   padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
-tr:nth-child(even) {
+table.custom-table tr:nth-child(even) {
   background: linear-gradient(0deg, #c0c0c0 0%, #f2f2f2 100%);
+}
+
+table.custom-table tr:nth-child(odd) {
+  background: #fff;
+}
+
+.bill-result {
+  padding: 30px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+  margin-left: 30px;
+  border-radius: 6px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bill-result tr {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.bill-result table {
+  width: 100%;
+}
+
+.help {
+  position: absolute;
+  width: 180px;
+  top: 20px;
+  left: 20px;
+}
+
+.help:hover {
+  color: #fff!important;
 }

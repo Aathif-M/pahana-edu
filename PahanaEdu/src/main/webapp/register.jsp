@@ -71,6 +71,8 @@
     </head>
 
     <body>
+    
+    <a href="${pageContext.request.contextPath}/help-center.jsp" class="help btn btn-info back">Need Help?</a>
 
         <div class="login-register-container">
             <h2>Admin Registration</h2>
