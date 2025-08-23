@@ -72,8 +72,8 @@
             <td>Rs. <%= String.format("%.2f", i.getPrice()) %></td>
             <td><%= i.getStock() %></td>
             <td>
-                <a href="inventory?action=edit&id=<%= i.getId() %>">Edit</a> |
-                <a href="inventory?action=delete&id=<%= i.getId() %>" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                <a href="inventory?action=edit&id=<%= i.getId() %> " class="btn btn-info">Edit</a>
+                <a href="inventory?action=delete&id=<%= i.getId() %>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
             </td>
         </tr>
     <%

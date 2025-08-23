@@ -78,8 +78,8 @@
 <td><%= c.getUnitsConsumed() %></td>
 <td><%= c.getPurchasedBooks() %></td>   <!-- ✅ show JSON string -->
 <td>
-    <a href="customers?action=edit&accountNumber=<%= c.getAccountNumber() %>">Edit</a> |
-    <a href="customers?action=delete&accountNumber=<%= c.getAccountNumber() %>" onclick="return confirm('Are you sure you want to delete this customer?');">Delete</a>
+    <a href="customers?action=edit&accountNumber=<%= c.getAccountNumber() %>" class="btn btn-info">Edit</a>
+    <a href="customers?action=delete&accountNumber=<%= c.getAccountNumber() %>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this customer?');">Delete</a>
 </td>
 
         </tr>
@@ -114,7 +114,7 @@
     <input class="custom-input" type="number" name="telephone" value="<%= (editCustomer != null) ? editCustomer.getTelephone() : "" %>" required /><br/>
 
     <label>Units Consumed:</label><br/>
-    <input class="custom-input" type="number" name="unitsConsumed" min="0" value="<%= (editCustomer != null) ? editCustomer.getUnitsConsumed() : "0" %>" required /><br/>
+    <input class="custom-input" type="number" name="unitsConsumed" min="0" value="<%= (editCustomer != null) ? editCustomer.getUnitsConsumed() : "0" %>" required disabled /><br/>
 
     <input class="custom-input" type="submit" value="<%= (editCustomer != null) ? "Update Customer" : "Add Customer" %>" />
 </form>

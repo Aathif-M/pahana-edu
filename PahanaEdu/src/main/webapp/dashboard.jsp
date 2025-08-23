@@ -1,7 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-    <%@ page import="com.pahanaedu.model.Admin" %>
-        <% Admin admin=(Admin) session.getAttribute("admin"); if (admin==null) { response.sendRedirect("login.jsp");
-            return; } %>
+<%@ page import="com.pahanaedu.model.Admin" %>
+<% Admin admin=(Admin) session.getAttribute("admin"); 
+	if (admin==null) { response.sendRedirect("login.jsp");  
+	return; 
+	} 
+	%>
             <!DOCTYPE html>
             <html>
 
